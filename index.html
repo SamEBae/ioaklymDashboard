@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="author" content="Sammie Bae">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Lokalym</title>
+<head>
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.0.0-beta/nv.d3.css">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div id="header">
+      <h1>LOKALYM:</h1>
+    </div>
+    <div id="title">
+      <h1> Data Dashboard:</h1>
+    </div>
+    <h2 class="data_title">
+        Foot Pressure Data:
+        <!-- <img class="icon" src="img/foot.PNG"> -->
+    </h2>
+    <div id="footchart">
+      <svg></svg>
+    </div>
+    <h2 class="data_title">
+        Foot Angle Data:
+        <!-- <img class="icon" src="img/angle.PNG"> -->
+    </h2>
+    <div id="chart">
+      <svg></svg>
+    </div>
+    <!-- Javascript includes -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.0.0-beta/nv.d3.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script type="text/javascript" src="dashboard.js"></script>
+</body>

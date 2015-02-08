@@ -1,0 +1,31 @@
+/*
+	Chart stuff
+*/
+#chart svg {
+  height: 400px;
+  width:1200px;
+}
+
+#footchart svg{
+   height: 400px;
+   width:1200px;
+}
+
+/*
+	Main CSS stuff
+*/
+#header {
+	background-color: #6cc9c9;
+	padding: 20px;
+}
+#header h1{
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	font-weight: 800;
+}
+
+#title h1{
+	font-family: 'Open Sans', sans-serif;
+	color: #6cc9c9;
+	text-align: center;
+}
