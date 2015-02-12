@@ -1,59 +1,59 @@
-nv.addGraph(function() {
-  var chart = nv.models.lineWithFocusChart();
+// nv.addGraph(function() {
+//   var chart = nv.models.lineWithFocusChart();
 
-  chart.xAxis
-      .tickFormat(d3.format(',f'));
+//   chart.xAxis
+//       .tickFormat(d3.format(',f'));
 
-  chart.yAxis
-      .tickFormat(d3.format(',.2f'));
+//   chart.yAxis
+//       .tickFormat(d3.format(',.2f'));
 
-  chart.y2Axis
-      .tickFormat(d3.format(',.2f'));
+//   chart.y2Axis
+//       .tickFormat(d3.format(',.2f'));
 
-  d3.select('#chart2 svg')
-      .datum(testData())
-      .transition().duration(500)
-      .call(chart);
+//   d3.select('#chart2 svg')
+//       .datum(testData())
+//       .transition().duration(500)
+//       .call(chart);
 
-  nv.utils.windowResize(chart.update);
+//   nv.utils.windowResize(chart.update);
 
-  return chart;
-});
-/**************************************
- * Simple test data generator
- */
+//   return chart;
+// });
+// /**************************************
+//  * Simple test data generator
+//  */
 
-function testData() {
-  return stream_layers(3,128,.1).map(function(data, i) {
-    return { 
-      key: 'Stream' + i,
-      values: data
-    };
-  });
-}
+// function testData() {
+//   return stream_layers(3,128,.1).map(function(data, i) {
+//     return { 
+//       key: 'Stream' + i,
+//       values: data
+//     };
+//   });
+// }
 
-function stream_layers(n, m, o) {
-  if (arguments.length < 3) o = 0;
-  function bump(a) {
-    var x = 1 / (.1 + Math.random()),
-        y = 2 * Math.random() - .5,
-        z = 10 / (.1 + Math.random());
-    for (var i = 0; i < m; i++) {
-      var w = (i / m - y) * z;
-      a[i] += x * Math.exp(-w * w);
-    }
-  }
-  return d3.range(n).map(function() {
-      var a = [], i;
-      for (i = 0; i < m; i++) a[i] = o + o * Math.random();
-      for (i = 0; i < 5; i++) bump(a);
-      return a.map(stream_index);
-    });
-}
+// function stream_layers(n, m, o) {
+//   if (arguments.length < 3) o = 0;
+//   function bump(a) {
+//     var x = 1 / (.1 + Math.random()),
+//         y = 2 * Math.random() - .5,
+//         z = 10 / (.1 + Math.random());
+//     for (var i = 0; i < m; i++) {
+//       var w = (i / m - y) * z;
+//       a[i] += x * Math.exp(-w * w);
+//     }
+//   }
+//   return d3.range(n).map(function() {
+//       var a = [], i;
+//       for (i = 0; i < m; i++) a[i] = o + o * Math.random();
+//       for (i = 0; i < 5; i++) bump(a);
+//       return a.map(stream_index);
+//     });
+// }
 
-function stream_index(d, i) {
-  return {x: i, y: Math.max(0, d)};
-}
+// function stream_index(d, i) {
+//   return {x: i, y: Math.max(0, d)};
+// }
 
 // var ObjectId = require('mongodb').ObjectID;
 
@@ -65,21 +65,20 @@ d3.select('#footchart svg').datum([
     color: "#BD362F",
     values:
       [      
-        { x : "20:00:00.000",   y : Math.random()*45+45 },
-        { x : "20:10:00.000",   y : Math.random()*45+45 },
-        { x : "20:20:00.000",   y : Math.random()*45+45 },
-        { x : "20:30:00.000",   y : Math.random()*45+45 },
-        { x : "20:40:00.000",   y : Math.random()*45+45 },
-        { x : "20:50:00.000",   y : Math.random()*45+45 },
-        { x : "21:00:00.000",   y : Math.random()*45+45 }
+        { x : "20:00:00.000",   y : Math.random()*10+10 },
+        { x : "20:10:00.000",   y : Math.random()*10+10 },
+        { x : "20:20:00.000",   y : Math.random()*10+10 },
+        { x : "20:30:00.000",   y : Math.random()*10+10 },
+        { x : "20:40:00.000",   y : Math.random()*10+10 },
+        { x : "20:50:00.000",   y : Math.random()*10+10 },
+        { x : "21:00:00.000",   y : Math.random()*10+10 }
       ]
   }
-]).transition().duration(500).call(chart.forceY([0,90]));
+]).transition().duration(500).call(chart.forceY([10,20]).color(["#BD362F"]));
 
 
 
 var footchart = nv.models.discreteBarChart();
-
 
 d3.select('#chart svg').datum([
   {

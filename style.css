@@ -1,15 +1,22 @@
 /*
 	Chart stuff
 */
-#chart svg {
+#anglechart svg {
   height: 400px;
   width:1200px;
+}
+#anglechart img{
+	margin: 0px 12.6px;
+	width: 30px;
+	height: 30px;
+	display: relative;
 }
 
 #footchart svg{
    height: 400px;
    width:1200px;
 }
+
 
 /*
 	Main CSS stuff
