@@ -1,4 +1,3 @@
-
 //Fake sample data
 var lineData = [{
   x: 1,
@@ -19,27 +18,40 @@ var lineData = [{
   x: 100,
   y: 60
 }];
+// console.log(lineData);
+// console.log(generatePressureData());
+lineData = generatePressureData();
 
-var lineData2 = [{
-  x: 1,
-  y: 5
-}, {
-  x: 20,
-  y: 20
-}, {
-  x: 40,
-  y: 10
-}, {
-  x: 60,
-  y: 40
-}, {
-  x: 80,
-  y: 5
-}, {
-  x: 100,
-  y: 60
-}];
-
+//loop to generate fake sets of data
+//time interval is 10mins for a 3hour total time
+  function generatePressureData(){
+      var Data = [];
+      //start at 20:00 hour
+      // var hour=19;
+      var min=50;
+      for(var i=0;i<=18;i++){
+          min+=10;
+          // if(min==60){
+          //   hour++;
+          //   min=0;
+          // }
+          //temp object
+          var temp = {};
+          // temp['x']=String(hour)+":"+String(min);
+          temp['x']=min;
+          temp['y']=(10+Math.random()*2);
+          Data.push(temp);
+      }
+      return Data;
+  }
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+    color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
+  }
 
 var vis = d3.select('#visualisation'),
     WIDTH = 1000,
@@ -80,7 +92,6 @@ vis.append('svg:g')
   .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
   .call(yAxis);
 
-//
 var lineFunc = d3.svg.line()
   .x(function(d) {
     return xRange(d.x);
@@ -90,8 +101,15 @@ var lineFunc = d3.svg.line()
   })
   .interpolate('linear');
 
-vis.append('svg:path')
-  .attr('d', lineFunc(lineData))
-  .attr('stroke', 'blue')
-  .attr('stroke-width', 2)
-  .attr('fill', 'none');
+var randomData = [generatePressureData(),generatePressureData(),generatePressureData(),generatePressureData()];
+
+  $(document).ready(function(){
+    for (var i=0;i<=randomData.length;i++){
+      vis.append('svg:path')
+      .attr('d', lineFunc(generatePressureData()))
+      .attr('stroke', getRandomColor())
+      .attr('stroke-width', 3)
+      .attr('fill', 'none')
+      ;
+    }
+  });
