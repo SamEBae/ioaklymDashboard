@@ -160,3 +160,12 @@ function parseData(JSON){
 $(document).ready(function() {
     parseData(sampledata2);
 });
+
+
+function testData(){
+  $.getJSON({ "https://ioaklym.herokuapp.com/steps", function(data){
+    console.log(data);
+    }
+  });
+
+}
