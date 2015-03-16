@@ -5,7 +5,7 @@ a:link, a:visited, a:hover, a:active{
 	font-weight: 800;
 }
 
-h1,a,p{
+h1,a,p,div{
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -26,7 +26,6 @@ h1,a,p{
 
 #footchart svg{
    height: 400px;
-   width:1200px;
 }
 
 #visualisation{
@@ -60,13 +59,18 @@ h1,a,p{
 
 /*Profile stuff*/
 #profile{
-	float: left;
+	text-align: center;
+	/*float: right;*/
+	border: 12px solid #288E8E;
 }
 
 #profilepic{
 	border-radius: 100%;
 }
+#profiletitle{
+	font-weight: bold;
 
-#map{
-	float: left;
 }
+#map{
+	/*float: right;
+*/}
