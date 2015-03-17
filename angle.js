@@ -2,6 +2,9 @@
   anglechart.yAxis.axisLabel('Angle°');
   anglechart.xAxis.axisLabel('Time(hour:min:second)');
   //angle chart 
+
+
+
   d3.select('#anglechart svg').datum([
     { 
       key: "Left foot",
@@ -27,7 +30,8 @@
           { x : "22:50",   y : Math.random()*10+(10*randomSign()) },
           { x : "23:00",   y : Math.random()*10+(10*randomSign()) }
         ],
-        color: '#288E8E'
+        color: '#288E8E',
+        image_path: "img/leftfoot.png"
     },
     { 
       key: "Right foot",
@@ -52,10 +56,13 @@
           { x : "22:40",   y : Math.random()*10+(10*randomSign()) },
           { x : "22:50",   y : Math.random()*10+(10*randomSign()) },
           { x : "23:00",   y : Math.random()*10+(10*randomSign()) }
-        ]
+        ],
+        color: '#9CE3E3',
+        image_path: "img/rightfoot.png"
     }
   ]).transition().duration(1000).call(anglechart.forceY([-10,20]).color(["#066464"]));
 
+  d3.select('.nv-legendWrap').append("image").style('src','img/leftfoot.JPG');
   //favors right foot. 
   function randomSign(){
     if(Math.random()>0.75)return -1;

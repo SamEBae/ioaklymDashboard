@@ -62,10 +62,15 @@ h1,a,p,div{
 	text-align: center;
 	/*float: right;*/
 	border: 12px solid #288E8E;
+	position: absolute;
+	right: 0;
+	top: 120px;
 }
 
 #profilepic{
+	border: 2px solid #288E8E;
 	border-radius: 100%;
+	height: 256px;
 }
 #profiletitle{
 	font-weight: bold;
@@ -74,3 +79,8 @@ h1,a,p,div{
 #map{
 	/*float: right;
 */}
+#mapdata{
+	position: absolute;
+	right: 50px;
+	top: 800px;	
+}
