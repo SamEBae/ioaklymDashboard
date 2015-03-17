@@ -55,6 +55,7 @@ h1,a,p,div{
 
 #downloadAngle{
 	border: 4px solid #6cc9c9;
+	text-align: center;
 }
 
 /*Profile stuff*/
@@ -63,7 +64,7 @@ h1,a,p,div{
 	/*float: right;*/
 	border: 12px solid #288E8E;
 	position: absolute;
-	right: 0;
+	right: 50px;
 	top: 120px;
 }
 
@@ -77,10 +78,13 @@ h1,a,p,div{
 
 }
 #map{
-	/*float: right;
-*/}
+	/*border: 4px solid #288E8E;*/
+	padding-bottom: 25px;
+}
 #mapdata{
 	position: absolute;
 	right: 50px;
-	top: 800px;	
+	top: 775px;	
+	border: 12px solid #288E8E;
+	text-align: center;
 }

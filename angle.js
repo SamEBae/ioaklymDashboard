@@ -1,4 +1,8 @@
-  var anglechart = nv.models.multiBarChart().margin({left: 100});
+  var anglechart = nv.models.multiBarChart().margin({left: 100})
+                    .tooltip(function(key, x, y, e, graph) {
+                      return '<h3>x&#772:'+y+'</h3>' +
+                             '<p>' +  y + '° at ' + x + '</p>';
+                    });
   anglechart.yAxis.axisLabel('Angle°');
   anglechart.xAxis.axisLabel('Time(hour:min:second)');
   //angle chart 
@@ -62,7 +66,15 @@
     }
   ]).transition().duration(1000).call(anglechart.forceY([-10,20]).color(["#066464"]));
 
-  d3.select('.nv-legendWrap').append("image").style('src','img/leftfoot.JPG');
+  d3.selectAll(".nv-series")
+   .append("a")
+   .attr("xlink:href", "www.google.com")
+   .append("image")
+   .attr("xlink:href", "img/rightfoot.JPG");
+
+  function test(){
+    $(".nv-legend").append("<img src='img/rightfoot.JPG'>");
+  }
   //favors right foot. 
   function randomSign(){
     if(Math.random()>0.75)return -1;
