@@ -92,7 +92,7 @@ h1,a,p,div{
 
 
 .row {
-    display: table;
+    display: none;
 }
 
 .row .panel {

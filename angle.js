@@ -113,3 +113,16 @@
   a.textContent = "Download angle data";
 
   document.getElementById('downloadAngle').appendChild(a);
+
+
+  var show=false;
+  $("#menu").click(function (){
+    if(!show){
+      show = true;
+      $('.row').fadeIn(1200);
+    }else{
+      show = false;
+      $('.row').fadeOut(1200);
+    }
+    
+  })
