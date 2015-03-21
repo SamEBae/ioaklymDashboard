@@ -5,8 +5,8 @@
                     });
   anglechart.yAxis.axisLabel('Angle°');
   anglechart.xAxis.axisLabel('Time(hour:min:second)');
-  //angle chart 
 
+  //angle chart 
   var testchart = nv.models.multiBarChart().margin({left: 100})
                     .tooltip(function(key, x, y, e, graph) {
                       return '<h3>x&#772:'+y+'</h3>' +
@@ -14,11 +14,11 @@
                     });
   testchart.yAxis.axisLabel('Angle°');
   testchart.xAxis.axisLabel('Time(hour:min:second)');
+  testchart.reduceXTicks(false);
 
   //array in which to store the data from the JSON response
   var AngleDataLeftFoot   =[];
   var AngleDataRightFoot  =[];
-
 
   function testData(){
     $.getJSON('http://ioaklym.herokuapp.com/steps', function(data) {
@@ -30,7 +30,7 @@
           console.log((data[i].timestamp).substring(12,19));
           //push it to array
           AngleDataLeftFoot.push({x: (data[i].timestamp).substring(12,19),  y: data[i].angle});
-          AngleDataRightFoot.push({x:(data[i].timestamp).substring(12,19),  y: Math.random()+110+(10*randomSign())})
+          AngleDataRightFoot.push({x:(data[i].timestamp).substring(12,19),  y: Math.random()+125+(10*randomSign())})
         };
     });
   }
@@ -57,7 +57,7 @@
     }
 
     setTimeout(function(){
-      d3.select('#testchart svg').datum(data()).transition().duration(1000).call(testchart.forceY([0,20]).color(["#066464"]));
+      d3.select('#testchart svg').datum(data()).transition().duration(1000).call(testchart.forceY([90]).color(["#066464"]));
     },delay);
   });
 
@@ -66,7 +66,7 @@
       key: "Left foot",
       values:
         [      
-          { x : "20:00",   y : Math.random()*10+(10*randomSign())},
+          { x : "20:00",   y : Math.random()*10+(10)},
           { x : "20:10",   y : Math.random()*10+(10*randomSign()) },
           { x : "20:20",   y : Math.random()*10+(10*randomSign()) },
           { x : "20:30",   y : Math.random()*10+(10*randomSign()) },

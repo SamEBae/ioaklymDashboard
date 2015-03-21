@@ -13,6 +13,15 @@ h1,a,p,div{
 /*
 	Chart stuff
 */
+#testchart svg {
+  height: 400px;
+  width:1200px;
+}
+#pressurechart svg {
+  height: 400px;
+  width:1200px;
+}
+
 #anglechart svg {
   height: 400px;
   width:1200px;
