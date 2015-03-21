@@ -1,3 +1,12 @@
+var pressurechart = nv.models.lineChart().margin({left: 100});
+
+pressurechart.yAxis.axisLabel('Pressure');
+pressurechart.xAxis.axisLabel('Time(hour:min:second)');
+
+
+d3.select('#pressurechart svg').datum(pressureData()).transition().duration(1000).call(pressurechart.forceY([0,1]));
+
+
 function pressureData() {
   var point1 =[];
   var point2 =[];
@@ -5,10 +14,10 @@ function pressureData() {
   var point4 =[];
 
   for (var i = 0; i < 100; i++) {
-    point1.push({x: i, y: Math.sin(i/10)});
-    point2.push({x: i, y: .5 * Math.cos(i/10)});
-    point3.push({x: i, y:  Math.sin(2*i/10)});
-    point4.push({x: i, y:  Math.cos(2*i/10)});
+    point1.push({x: i, y: Math.sin(i/10)+Math.random()});
+    point2.push({x: i, y: Math.cos(i/10)+Math.random()});
+    point3.push({x: i, y: Math.sin(i/10)+Math.random()});
+    point4.push({x: i, y: Math.cos(i/10)+Math.random()});
   }
 
   return [
