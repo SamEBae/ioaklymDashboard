@@ -7,7 +7,59 @@
   anglechart.xAxis.axisLabel('Time(hour:min:second)');
   //angle chart 
 
+  var testchart = nv.models.multiBarChart().margin({left: 100})
+                    .tooltip(function(key, x, y, e, graph) {
+                      return '<h3>x&#772:'+y+'</h3>' +
+                             '<p>' +  y + '° at ' + x + '</p>';
+                    });
+  testchart.yAxis.axisLabel('Angle°');
+  testchart.xAxis.axisLabel('Time(hour:min:second)');
 
+  //array in which to store the data from the JSON response
+  var AngleDataLeftFoot   =[];
+  var AngleDataRightFoot  =[];
+
+
+  function testData(){
+    $.getJSON('http://ioaklym.herokuapp.com/steps', function(data) {
+        console.log(data);
+        //loop and see see ach different data entry
+        for (var i = 0; i < data.length; i++) {
+          //storing the data
+          console.log(data[i].angle);
+          console.log((data[i].timestamp).substring(12,19));
+          //push it to array
+          AngleDataLeftFoot.push({x: (data[i].timestamp).substring(12,19),  y: data[i].angle});
+          AngleDataRightFoot.push({x:(data[i].timestamp).substring(12,19),  y: Math.random()+110+(10*randomSign())})
+        };
+    });
+  }
+
+  $(document).ready(function (){
+    //time delay for the JSON to load from the api 
+    testData(); 
+    var delay = 3000;
+    
+    //nvd3 calls this function to retreive the data
+    function data() {
+      return [
+        {
+          values: AngleDataLeftFoot,
+          key: 'Left Foot',
+          color: '#288E8E'
+        },
+        {
+          values: AngleDataRightFoot,
+          key: 'Right foot',
+          color: '#9CE3E3'
+        }
+      ];
+    }
+
+    setTimeout(function(){
+      d3.select('#testchart svg').datum(data()).transition().duration(1000).call(testchart.forceY([0,20]).color(["#066464"]));
+    },delay);
+  });
 
   d3.select('#anglechart svg').datum([
     { 
@@ -34,8 +86,7 @@
           { x : "22:50",   y : Math.random()*10+(10*randomSign()) },
           { x : "23:00",   y : Math.random()*10+(10*randomSign()) }
         ],
-        color: '#288E8E',
-        image_path: "img/leftfoot.png"
+        color: '#288E8E'
     },
     { 
       key: "Right foot",
@@ -61,8 +112,7 @@
           { x : "22:50",   y : Math.random()*10+(10*randomSign()) },
           { x : "23:00",   y : Math.random()*10+(10*randomSign()) }
         ],
-        color: '#9CE3E3',
-        image_path: "img/rightfoot.png"
+        color: '#9CE3E3'
     }
   ]).transition().duration(1000).call(anglechart.forceY([-10,20]).color(["#066464"]));
 
@@ -80,13 +130,7 @@
     if(Math.random()>0.75)return -1;
     return 1;
   }
-
-  function testData(){
-    $.getJSON('http://ioaklym.herokuapp.com/steps', function(data) {
-        console.log(data);
-    });
-  }
-
+  
   // creates the download link
   var jsonData = (function () {
     var json = null;
