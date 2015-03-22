@@ -45,7 +45,7 @@ h1,a,p,div{
 	height: 500px;
 }
 
-#downloadAngle{
+#downloadAngle, #caculations{
 	border: 4px solid #6cc9c9;
 	text-align: center;
 	width: 20%;
@@ -76,15 +76,16 @@ h1,a,p,div{
 	border-right: 4px solid #288E8E;
 	opacity: 0.5;
 }
+
 #map{
 	padding-bottom: 25px;
 }
+
 #mapdata{
 	border: 12px solid #288E8E;
 	text-align: center;
 	opacity: 0.5;
 }
-
 
 .row {
     display: none;

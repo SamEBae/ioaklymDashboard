@@ -1,3 +1,8 @@
+//tool tip at the top
+
+$('#menu').tipsy({trigger: 'manual', title: 'original-title', gravity:'w'});
+$('#menu').tipsy('show');
+
 var pressurechart = nv.models.lineChart().margin({left: 100});
 
 pressurechart.yAxis.axisLabel('Pressure');

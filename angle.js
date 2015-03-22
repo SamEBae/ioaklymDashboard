@@ -1,11 +1,3 @@
-  var anglechart = nv.models.multiBarChart().margin({left: 100})
-                    .tooltip(function(key, x, y, e, graph) {
-                      return '<h3>x&#772:'+y+'</h3>' +
-                             '<p>' +  y + '° at ' + x + '</p>';
-                    });
-  anglechart.yAxis.axisLabel('Angle°');
-  anglechart.xAxis.axisLabel('Time(hour:min:second)');
-
   //angle chart 
   var testchart = nv.models.multiBarChart().margin({left: 100})
                     .tooltip(function(key, x, y, e, graph) {
@@ -61,70 +53,6 @@
     },delay);
   });
 
-  d3.select('#anglechart svg').datum([
-    { 
-      key: "Left foot",
-      values:
-        [      
-          { x : "20:00",   y : Math.random()*10+(10)},
-          { x : "20:10",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:20",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:30",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:40",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:50",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:00",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:10",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:20",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:30",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:40",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:50",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:00",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:10",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:20",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:30",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:40",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:50",   y : Math.random()*10+(10*randomSign()) },
-          { x : "23:00",   y : Math.random()*10+(10*randomSign()) }
-        ],
-        color: '#288E8E'
-    },
-    { 
-      key: "Right foot",
-      values:
-        [      
-          { x : "20:00",   y : Math.random()*10+(10*randomSign())},
-          { x : "20:10",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:20",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:30",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:40",   y : Math.random()*10+(10*randomSign()) },
-          { x : "20:50",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:00",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:10",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:20",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:30",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:40",   y : Math.random()*10+(10*randomSign()) },
-          { x : "21:50",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:00",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:10",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:20",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:30",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:40",   y : Math.random()*10+(10*randomSign()) },
-          { x : "22:50",   y : Math.random()*10+(10*randomSign()) },
-          { x : "23:00",   y : Math.random()*10+(10*randomSign()) }
-        ],
-        color: '#9CE3E3'
-    }
-  ]).transition().duration(1000).call(anglechart.forceY([-10,20]).color(["#066464"]));
-
-  d3.selectAll(".nv-series")
-   .append("a")
-   .attr("xlink:href", "www.google.com")
-   .append("image")
-   .attr("xlink:href", "img/rightfoot.JPG");
-
-  function test(){
-    $(".nv-legend").append("<img src='img/rightfoot.JPG'>");
-  }
   //favors right foot. 
   function randomSign(){
     if(Math.random()>0.75)return -1;
@@ -164,9 +92,14 @@
     if(!show){
       show = true;
       $('.row').fadeIn(1200);
+      $('#menu').tipsy({show:'false'});
     }else{
       show = false;
       $('.row').fadeOut(1200);
+      $('#menu').tipsy({show:'true'});
     }
     
   })
+
+$('#menu').tipsy({trigger: 'manual', title: 'original-title', gravity:'w'});
+$('#menu').tipsy('show');
