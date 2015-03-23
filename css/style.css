@@ -30,13 +30,20 @@ h1,a,p,div{
 /*
 	Main CSS stuff
 */
+
+#header .menu-btn {
+	display: inline-block;
+	font-size: 35px;	
+}
+
 #header {
 	background-color: #6cc9c9;
-	padding: 20px;
 }
 #header h1{
 	color: white;
 	font-weight: 400;
+	display: inline-block;
+	margin: 0 0 0 10px;
 }
 
 #title h1{
@@ -65,9 +72,9 @@ h1,a,p,div{
 }
 
 #profilepic{
-	border: 2px solid #288E8E;
 	border-radius: 100%;
-	height: 256px;
+	height: 80px;
+	margin-top: 10px;
 }
 .title{
 	font-weight: bold;
@@ -105,4 +112,17 @@ h1,a,p,div{
 #profile:hover,
 #userinfo:hover{
 	opacity: 1;
+}
+
+.pushy-item > div {
+    color: #D5D5D5;
+}
+
+.pushy > ul {
+	padding-left: 0;
+	text-align: center;
+}
+
+.pushy-item > .userinfo {
+	margin-top: 20px;
 }

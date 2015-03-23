@@ -185,13 +185,12 @@
               show: 'true'
           });
       }
-
   })
 
   //tooltip using tipsy.js library
   $('#menu').tipsy({
       trigger: 'manual',
       title: 'original-title',
-      gravity: 'w'
+      gravity: 'nw'
   });
   $('#menu').tipsy('show');
