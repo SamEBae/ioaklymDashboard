@@ -8,6 +8,14 @@ a:link, a:visited, a:hover, a:active{
 h1,a,p,div{
 	font-family: 'Open Sans', sans-serif;
 }
+.blue {
+	color: #6cc9c9;
+	font-size: 0.75em;
+	display: inline;	
+}
+.bold{
+	font-weight: bold;
+}
 
 
 /*
@@ -125,4 +133,8 @@ h1,a,p,div{
 
 .pushy-item > .userinfo {
 	margin-top: 20px;
+}
+
+.title{
+	text-align: center;
 }

@@ -8,6 +8,32 @@
           d3.select('#swingchart svg').datum(swingDataJSON()).transition().duration(1000).call(swingchart.forceY([0,300]));
           d3.select('#stancechart svg').datum(stanceDataJSON()).transition().duration(1000).call(stancechart.forceY([0,30]));
           d3.select('#stridechart svg').datum(strideDataJSON()).transition().duration(1000).call(stridechart.forceY([0,400]));
+
+          //blue 'seconds' text
+          var bluetext = "<div class='blue'>Seconds</div>";
+
+          var swingSum =0;
+          for (var i = swingData.length - 1; i >= 0; i--) {
+            swingSum +=parseInt(swingData[i].y);
+          };
+          swingAverage = swingSum/swingData.length;
+          $("#swingAverage").html(swingAverage+bluetext);
+          
+          var stanceSum =0;
+          for (var i = stanceData.length - 1; i >= 0; i--) {
+            stanceSum +=parseInt(stanceData[i].y);
+          };
+          stanceAverage = stanceSum/stanceData.length;
+          $("#stanceAverage").html(stanceAverage+bluetext);
+
+          var strideSum =0;
+          for (var i = strideData.length - 1; i >= 0; i--) {
+            strideSum +=parseInt(strideData[i].y);
+          };
+          strideAverage = strideSum/stanceData.length;
+          $("#strideAverage").html(strideAverage+bluetext);
+          
+
           //d3.select('#swingchart svg').datum(angleDataJSON()).transition().duration(1000).call(swingchart.forceY([0]));
       }, delay);
   });
@@ -30,6 +56,9 @@
   var swingData           = [];
   var strideData          = [];
   var stanceData          = [];
+  var swingAverage;
+  var strideAverage;
+  var stanceAverage;
 
   function getData() {
       $.getJSON('http://ioaklym.herokuapp.com/steps', function(data) {
