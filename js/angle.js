@@ -4,7 +4,7 @@
       var delay = 3000;
 
       setTimeout(function() {
-          d3.select('#angleChart svg').datum(angleDataJSON()).transition().duration(1000).call(angleChart.forceY([45, 270]).color(["#066464"]));
+          d3.select('#angleChart svg').datum(angleDataJSON()).transition().duration(1000).call(angleChart.forceY([0, 20]).color(["#066464"]));
           d3.select('#swingchart svg').datum(swingDataJSON()).transition().duration(1000).call(swingchart.forceY([0,300]));
           d3.select('#stancechart svg').datum(stanceDataJSON()).transition().duration(1000).call(stancechart.forceY([0,30]));
           d3.select('#stridechart svg').datum(strideDataJSON()).transition().duration(1000).call(stridechart.forceY([0,400]));
@@ -47,7 +47,7 @@
               '<p>' + y + '° at ' + x + '</p>';
       });
   angleChart.yAxis.axisLabel('Angle°');
-  angleChart.xAxis.axisLabel('Time(hour:min:second)');
+  angleChart.xAxis.axisLabel('Time(hour:min)');
   angleChart.reduceXTicks(false);
 
   //array in which to store the data from the JSON response
@@ -67,35 +67,35 @@
           for (var i = 0; i < data.length; i++) {
               //storing the data
               console.log(data[i].angle);
-              console.log((data[i].timestamp).substring(12, 19));
+              console.log((data[i].timestamp).substring(12, 16));
               console.log(data[i].swing);
               //push it to array
 
               if (data[i].angle) {
                   AngleDataLeftFoot.push({
-                      x: (data[i].timestamp).substring(12, 19),
+                      x: (data[i].timestamp).substring(12, 16),
                       y: data[i].angle
                   });
                   AngleDataRightFoot.push({
-                      x: (data[i].timestamp).substring(12, 19),
+                      x: (data[i].timestamp).substring(12, 16),
                       y: Math.random() + 125 + (10 * randomSign())
                   });
               }
               if(typeof data[i].swing !== 'undefined'){
                   swingData.push({
-                      x: (data[i].timestamp).substring(12, 19),
+                      x: (data[i].timestamp).substring(12, 16),
                       y: data[i].swing
                   });
               }
               if(data[i].stride){
                   strideData.push({
-                      x: (data[i].timestamp).substring(12, 19),
+                      x: (data[i].timestamp).substring(12, 16),
                       y: data[i].stride
                   });
               }
               if(data[i].stance){
                   stanceData.push({
-                      x: (data[i].timestamp).substring(12, 19),
+                      x: (data[i].timestamp).substring(12, 16),
                       y: data[i].stance
                   });
               }
@@ -128,7 +128,7 @@
   });
 
   swingchart.yAxis.axisLabel('Swing (Time)');
-  swingchart.xAxis.axisLabel('Time(hour:min:second)');
+  swingchart.xAxis.axisLabel('Time(hour:min)');
 
   //data for the swing chart
   function swingDataJSON(){
@@ -145,7 +145,7 @@
   });
 
   stancechart.yAxis.axisLabel('Stance (Time)');
-  stancechart.xAxis.axisLabel('Time(hour:min:second)');
+  stancechart.xAxis.axisLabel('Time(hour:min)');
 
   //data for the swing chart
   function stanceDataJSON(){
@@ -162,7 +162,7 @@
   });
 
   stridechart.yAxis.axisLabel('Stride (Time)');
-  stridechart.xAxis.axisLabel('Time(hour:min:second)');
+  stridechart.xAxis.axisLabel('Time(hour:min)');
 
   //data for the swing chart
   function strideDataJSON(){
@@ -195,9 +195,9 @@
   });
   var url = URL.createObjectURL(blob);
   var a   = document.createElement('a');
-  a.download    = "angle.json";
+  a.download    = "rawdata.json";
   a.href        = url;
-  a.textContent = "Download angle data";
+  a.textContent = "Download raw data";
   document.getElementById('downloadAngle').appendChild(a);
   var show = false;
   $("#menu").click(function() {
