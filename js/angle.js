@@ -127,7 +127,7 @@
       left: 100
   });
 
-  swingchart.yAxis.axisLabel('Swing');
+  swingchart.yAxis.axisLabel('Swing (Time)');
   swingchart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
@@ -144,7 +144,7 @@
       left: 100
   });
 
-  stancechart.yAxis.axisLabel('Stance');
+  stancechart.yAxis.axisLabel('Stance (Time)');
   stancechart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
@@ -161,7 +161,7 @@
       left: 100
   });
 
-  stridechart.yAxis.axisLabel('Stance');
+  stridechart.yAxis.axisLabel('Stride (Time)');
   stridechart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart

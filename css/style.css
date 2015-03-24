@@ -35,6 +35,10 @@ h1,a,p,div{
   width:1200px;
 }
 
+.demo {
+	float: right;
+}
+
 /*
 	Main CSS stuff
 */
