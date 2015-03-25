@@ -4,10 +4,10 @@
       var delay = 3000;
 
       setTimeout(function() {
-          d3.select('#angleChart svg').datum(angleDataJSON()).transition().duration(1000).call(angleChart.forceY([0, 20]).color(["#066464"]));
-          d3.select('#swingchart svg').datum(swingDataJSON()).transition().duration(1000).call(swingchart.forceY([0,300]));
-          d3.select('#stancechart svg').datum(stanceDataJSON()).transition().duration(1000).call(stancechart.forceY([0,30]));
-          d3.select('#stridechart svg').datum(strideDataJSON()).transition().duration(1000).call(stridechart.forceY([0,400]));
+          d3.select('#angleChart svg').datum(angleDataJSON()).transition().duration(1000).call(angleChart.forceY([-10, 10]).color(["#066464"]));
+          d3.select('#swingchart svg').datum(swingDataJSON()).transition().duration(1000).call(swingchart);
+          d3.select('#stancechart svg').datum(stanceDataJSON()).transition().duration(1000).call(stancechart);
+          d3.select('#stridechart svg').datum(strideDataJSON()).transition().duration(1000).call(stridechart);
 
           //blue 'seconds' text
           var bluetext = "<div class='blue'>Seconds</div>";
@@ -17,6 +17,7 @@
             swingSum +=parseInt(swingData[i].y);
           };
           swingAverage = swingSum/swingData.length;
+          swingAverage = (Math.round(swingAverage * 100) / 100);
           $("#swingAverage").html(swingAverage+bluetext);
           
           var stanceSum =0;
@@ -24,6 +25,7 @@
             stanceSum +=parseInt(stanceData[i].y);
           };
           stanceAverage = stanceSum/stanceData.length;
+          stanceAverage = (Math.round(stanceAverage * 100) / 100);
           $("#stanceAverage").html(stanceAverage+bluetext);
 
           var strideSum =0;
@@ -31,6 +33,7 @@
             strideSum +=parseInt(strideData[i].y);
           };
           strideAverage = strideSum/stanceData.length;
+          strideAverage = (Math.round(strideAverage * 100) / 100);
           $("#strideAverage").html(strideAverage+bluetext);
           
 
@@ -47,7 +50,7 @@
               '<p>' + y + '° at ' + x + '</p>';
       });
   angleChart.yAxis.axisLabel('Angle°');
-  angleChart.xAxis.axisLabel('Time(hour:min)');
+  angleChart.xAxis.axisLabel('Time(hour:min:second)');
   angleChart.reduceXTicks(false);
 
   //array in which to store the data from the JSON response
@@ -67,35 +70,35 @@
           for (var i = 0; i < data.length; i++) {
               //storing the data
               console.log(data[i].angle);
-              console.log((data[i].timestamp).substring(12, 16));
+              console.log((data[i].timestamp).substring(12, 19));
               console.log(data[i].swing);
               //push it to array
 
               if (data[i].angle) {
                   AngleDataLeftFoot.push({
-                      x: (data[i].timestamp).substring(12, 16),
+                      x: (data[i].timestamp).substring(12, 19),
                       y: data[i].angle
                   });
                   AngleDataRightFoot.push({
-                      x: (data[i].timestamp).substring(12, 16),
-                      y: Math.random() + 125 + (10 * randomSign())
+                      x: (data[i].timestamp).substring(12, 19),
+                      y: Math.random() + (10 * randomSign())
                   });
               }
               if(typeof data[i].swing !== 'undefined'){
                   swingData.push({
-                      x: (data[i].timestamp).substring(12, 16),
+                      x: (data[i].timestamp).substring(12, 19),
                       y: data[i].swing
                   });
               }
               if(data[i].stride){
                   strideData.push({
-                      x: (data[i].timestamp).substring(12, 16),
+                      x: (data[i].timestamp).substring(12, 19),
                       y: data[i].stride
                   });
               }
               if(data[i].stance){
                   stanceData.push({
-                      x: (data[i].timestamp).substring(12, 16),
+                      x: (data[i].timestamp).substring(12, 19),
                       y: data[i].stance
                   });
               }
@@ -127,8 +130,8 @@
       left: 100
   });
 
-  swingchart.yAxis.axisLabel('Swing (Time)');
-  swingchart.xAxis.axisLabel('Time(hour:min)');
+  swingchart.yAxis.axisLabel('Swing Time (Seconds)');
+  swingchart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
   function swingDataJSON(){
@@ -144,8 +147,8 @@
       left: 100
   });
 
-  stancechart.yAxis.axisLabel('Stance (Time)');
-  stancechart.xAxis.axisLabel('Time(hour:min)');
+  stancechart.yAxis.axisLabel('Stance Time (Seconds)');
+  stancechart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
   function stanceDataJSON(){
@@ -161,8 +164,8 @@
       left: 100
   });
 
-  stridechart.yAxis.axisLabel('Stride (Time)');
-  stridechart.xAxis.axisLabel('Time(hour:min)');
+  stridechart.yAxis.axisLabel('Stride Time (Seconds)');
+  stridechart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
   function strideDataJSON(){
@@ -195,27 +198,13 @@
   });
   var url = URL.createObjectURL(blob);
   var a   = document.createElement('a');
-  a.download    = "rawdata.json";
+  a.download    = "angle.json";
   a.href        = url;
-  a.textContent = "Download raw data";
+  a.textContent = "Download angle data";
   document.getElementById('downloadAngle').appendChild(a);
-  var show = false;
-  $("#menu").click(function() {
-      if (!show) {
-          show = true;
-          $('.row').fadeIn(1200);
-          $('#menu').tipsy({
-              show: 'false'
-          });
-      } else {
-          show = false;
-          $('.row').fadeOut(1200);
-          $('#menu').tipsy({
-              show: 'true'
-          });
-      }
-  })
 
+
+  var clicked = 0;
   //tooltip using tipsy.js library
   $('#menu').tipsy({
       trigger: 'manual',
@@ -223,3 +212,8 @@
       gravity: 'nw'
   });
   $('#menu').tipsy('show');
+  $("#menu").click(function(){
+       $('#menu').tipsy('hide');
+  });
+
+  $('#device').tipsy({gravity: 'ne'});
