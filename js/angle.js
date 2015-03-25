@@ -4,10 +4,10 @@
       var delay = 3000;
 
       setTimeout(function() {
-          d3.select('#angleChart svg').datum(angleDataJSON()).transition().duration(1000).call(angleChart.forceY([45, 270]).color(["#066464"]));
-          d3.select('#swingchart svg').datum(swingDataJSON()).transition().duration(1000).call(swingchart.forceY([0,300]));
-          d3.select('#stancechart svg').datum(stanceDataJSON()).transition().duration(1000).call(stancechart.forceY([0,30]));
-          d3.select('#stridechart svg').datum(strideDataJSON()).transition().duration(1000).call(stridechart.forceY([0,400]));
+          d3.select('#angleChart svg').datum(angleDataJSON()).transition().duration(1000).call(angleChart.forceY([-10, 10]).color(["#066464"]));
+          d3.select('#swingchart svg').datum(swingDataJSON()).transition().duration(1000).call(swingchart);
+          d3.select('#stancechart svg').datum(stanceDataJSON()).transition().duration(1000).call(stancechart);
+          d3.select('#stridechart svg').datum(strideDataJSON()).transition().duration(1000).call(stridechart);
 
           //blue 'seconds' text
           var bluetext = "<div class='blue'>Seconds</div>";
@@ -17,6 +17,7 @@
             swingSum +=parseInt(swingData[i].y);
           };
           swingAverage = swingSum/swingData.length;
+          swingAverage = (Math.round(swingAverage * 100) / 100);
           $("#swingAverage").html(swingAverage+bluetext);
           
           var stanceSum =0;
@@ -24,6 +25,7 @@
             stanceSum +=parseInt(stanceData[i].y);
           };
           stanceAverage = stanceSum/stanceData.length;
+          stanceAverage = (Math.round(stanceAverage * 100) / 100);
           $("#stanceAverage").html(stanceAverage+bluetext);
 
           var strideSum =0;
@@ -31,6 +33,7 @@
             strideSum +=parseInt(strideData[i].y);
           };
           strideAverage = strideSum/stanceData.length;
+          strideAverage = (Math.round(strideAverage * 100) / 100);
           $("#strideAverage").html(strideAverage+bluetext);
           
 
@@ -78,7 +81,7 @@
                   });
                   AngleDataRightFoot.push({
                       x: (data[i].timestamp).substring(12, 19),
-                      y: Math.random() + 125 + (10 * randomSign())
+                      y: Math.random() + (10 * randomSign())
                   });
               }
               if(typeof data[i].swing !== 'undefined'){
@@ -127,7 +130,7 @@
       left: 100
   });
 
-  swingchart.yAxis.axisLabel('Swing (Time)');
+  swingchart.yAxis.axisLabel('Swing Time (Seconds)');
   swingchart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
@@ -144,7 +147,7 @@
       left: 100
   });
 
-  stancechart.yAxis.axisLabel('Stance (Time)');
+  stancechart.yAxis.axisLabel('Stance Time (Seconds)');
   stancechart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
@@ -161,7 +164,7 @@
       left: 100
   });
 
-  stridechart.yAxis.axisLabel('Stride (Time)');
+  stridechart.yAxis.axisLabel('Stride Time (Seconds)');
   stridechart.xAxis.axisLabel('Time(hour:min:second)');
 
   //data for the swing chart
@@ -199,23 +202,9 @@
   a.href        = url;
   a.textContent = "Download angle data";
   document.getElementById('downloadAngle').appendChild(a);
-  var show = false;
-  $("#menu").click(function() {
-      if (!show) {
-          show = true;
-          $('.row').fadeIn(1200);
-          $('#menu').tipsy({
-              show: 'false'
-          });
-      } else {
-          show = false;
-          $('.row').fadeOut(1200);
-          $('#menu').tipsy({
-              show: 'true'
-          });
-      }
-  })
 
+
+  var clicked = 0;
   //tooltip using tipsy.js library
   $('#menu').tipsy({
       trigger: 'manual',
@@ -223,3 +212,8 @@
       gravity: 'nw'
   });
   $('#menu').tipsy('show');
+  $("#menu").click(function(){
+       $('#menu').tipsy('hide');
+  });
+
+  $('#device').tipsy({gravity: 'ne'});
