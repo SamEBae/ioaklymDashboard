@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "55110afd2b2835030068cfce",
+    "user": "Maria",
+    "angle": "6.57",
+    "stride": "1.4",
+    "stance": "0.8",
+    "swing": "0.6",
+    "__v": 0,
+    "timestamp": "2015-03-24T06:58:05.511Z"
+  },
+  {
+    "_id": "55110b342b2835030068cfcf",
+    "user": "Maria",
+    "angle": "7.37",
+    "stride": "1.2",
+    "stance": "0.7",
+    "swing": "0.5",
+    "__v": 0,
+    "timestamp": "2015-03-24T06:59:00.762Z"
+  },
+  {
+    "_id": "55110b902b2835030068cfd0",
+    "user": "Maria",
+    "angle": "7.07",
+    "stride": "0.9",
+    "stance": "0.6",
+    "swing": "0.3",
+    "__v": 0,
+    "timestamp": "2015-03-24T07:00:00.000Z"
+  },
+  {
+    "_id": "55110bb92b2835030068cfd1",
+    "user": "Maria",
+    "angle": "5.90",
+    "stride": "1.9",
+    "stance": "1.3",
+    "swing": "0.6",
+    "__v": 0,
+    "timestamp": "2015-03-24T07:01:00.000Z"
+  },
+  {
+    "_id": "55110bd32b2835030068cfd2",
+    "user": "Maria",
+    "angle": "-2.90",
+    "stride": "1.4",
+    "stance": "1.0",
+    "swing": "0.4",
+    "__v": 0,
+    "timestamp": "2015-03-24T07:02:00.000Z"
+  },
+  {
+    "_id": "55110be62b2835030068cfd3",
+    "user": "Maria",
+    "angle": "-1.90",
+    "stride": "1.7",
+    "stance": "1.1",
+    "swing": "0.6",
+    "__v": 0,
+    "timestamp": "2015-03-24T07:03:00.000Z"
+  },
+  {
+    "_id": "55110c272b2835030068cfd4",
+    "user": "Maria",
+    "angle": "3.53",
+    "stride": "1.8",
+    "stance": "1.1",
+    "swing": "0.7",
+    "__v": 0,
+    "timestamp": "2015-03-24T07:04:00.000Z"
+  },
+  {
+    "_id": "55116c83cdda520300fdc20d",
+    "swing": "19.20",
+    "stance": "76.63",
+    "stride": "95.83",
+    "user": "Maria",
+    "angle": "6.90",
+    "__v": 0,
+    "timestamp": "2015-03-24T09:54:11.018Z"
+  },
+  {
+    "_id": "55116c85cdda520300fdc20e",
+    "swing": "0.70",
+    "stance": "0.18",
+    "stride": "0.88",
+    "user": "Maria",
+    "angle": "3.15",
+    "__v": 0,
+    "timestamp": "2015-03-24T09:54:12.911Z"
+  }
+]
