@@ -22,7 +22,7 @@
   
 <nav class="pushy pushy-left">
   <ul>
-    <li class="pushy-item">
+    <li class="pushy-item" >
       <img id='profilepic' src='img/user.svg'/>
       <div>Sammie Bae</div>
       <div class="userinfo">
@@ -40,41 +40,41 @@
 
 <div id="container">
   <div id="header">    
-    <div class="menu-btn">&#9776;</div>
+    <div class="menu-btn" id='menu' original-title="View User Info">&#9776;</div>
     <h1>iOaklym Dashboard</h1>
   </div>
-  <!--   <div id="title" class="col-md-5 col-lg-5">
-      <h1> Data Dashboard:</h1>
-    </div> -->
-  <h2 class="data_title">Foot Angle Data</h2>
-
+  <h2 class="data_title">Foot Angle Data:</h2>
   <div id ="angleChart">
+    <img id='device' src="img/boots.jpg" original-title="hardware wearable device"/>
     <svg></svg>
   </div>
 
-  <!--     <div id="anglechart">
-        <svg></svg>
-      </div> -->
   <div class="col-md-3 col-lg-3"></div>
+  <div id='downloadAngle'>
+  </div>
   <br>
-  
-  <h2>Swing Time</h2>
+  <h2 class="data_title">Motion Data:</h2>
   <div id="swingchart">
     <div class='demo'>
+      <img src='img/swing.gif'/>
+      <h2>Swing Motion</h2>
     </div>
     <svg></svg>
   </div>
 
-  <h2>Swing Time</h2>
   <div id="stancechart">
     <div class='demo'>
+      <img src='img/stance.gif'/>
+      <h2>Stance Motion</h2>
     </div>
+    
     <svg></svg>
   </div>
 
-  <h2>Stride Motion</h2>
   <div id="stridechart">
     <div class='demo'>
+      <img src='img/stride.gif'/>
+      <h2>Stride Motion</h2>
     </div>
     <svg></svg>
   </div>
@@ -92,14 +92,13 @@
   </table>
 </div>
 
-<div id='downloadAngle'></div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.0.0-beta/nv.d3.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.tipsy.js"></script>
-<script type="text/javascript" src="js/pushy.min.js"></script>
-<script type="text/javascript" src="js/angle.js"></script>
-<script type="text/javascript" src="js/pressure.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.0.0-beta/nv.d3.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+  <script type="text/javascript" src="js/pushy.min.js"></script>
+  <script type="text/javascript" src="js/angle.js"></script>
+<!--   // <script type="text/javascript" src="js/pressure.js"></script> -->
 </body>
 </html>
