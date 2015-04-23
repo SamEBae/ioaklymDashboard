@@ -40,7 +40,7 @@ h1,a,p,div{
 }
 #device{
 	float: right;
-	width: 30%;
+/*	width: 30%;*/
 	opacity: 0.075;
 	transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
